@@ -1,0 +1,69 @@
+<form #myForm1="ngForm" (ngSubmit)="save()">
+  <div class="modal-header">
+    <h4 class="modal-title text-center" id="modal-basic-title">AJOUTER UTILISATEUR</h4>
+    <button type="button" class="close" aria-label="Close" >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="Username">Username</label>
+          <input [(ngModel)]="users.username" name="Username" id="Username" class="form-control" type="text" placeholder="Username">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="Name">Name</label>
+          <input [(ngModel)]="users.name" required="true" name="name" id="Name" class="form-control" type="text" placeholder="Name">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="telephone">Telephone</label>
+          <input [(ngModel)]="users.telephone" name="telephone" id="telephone" class="form-control" type="text" placeholder="telephone">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input [(ngModel)]="users.email" name="email" id="email" class="form-control" type="email" placeholder="Email">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="password">password</label>
+          <input [(ngModel)]="users.password" name="password" id="password" class="form-control" type="password" placeholder="Mot de Passe">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="photo">Photo</label>
+          <input [(ngModel)]="users.photo" name="photo" id="photo" class="form-control" type="file" placeholder="photo">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="role">role</label>
+          <select required="required" [(ngModel)]="users.role.id" class="form-control" name="role" id="role">
+            <option *ngFor='let r of role' value="{{r.id}}">{{r.name}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="submit" [disabled]="!myForm1.form.valid" class="form-control btn btn-primary" value="Enregistrer">
+    </div>
+  </div>
+</form>

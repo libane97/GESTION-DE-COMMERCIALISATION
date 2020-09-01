@@ -1,0 +1,53 @@
+<form #myForm1="ngForm" (ngSubmit)="save()">
+  <div class="modal-header">
+    <h4 class="modal-title text-center" id="modal-basic-title">AJOUTER PRODUIT</h4>
+    <button type="button" class="close" aria-label="Close" >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="libelle">libelle</label>
+          <input [(ngModel)]="product.libelle" name="libelle" id="libelle" class="form-control" type="text" placeholder="libelle">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="prix">prix</label>
+          <input [(ngModel)]="product.prix" required="true" name="prix" id="prix" class="form-control" type="text" placeholder="prix">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="description">description</label>
+          <input [(ngModel)]="product.description" name="description" id="description" class="form-control" type="text" placeholder="description">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="quantite">Quantite</label>
+          <input [(ngModel)]="product.quantite" name="quantite" id="quantite" class="form-control" type="text" placeholder="quantite">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="categorie">categorie</label>
+          <select required="required" [(ngModel)]="product.categorie.id" class="form-control" name="categorie" id="categorie">
+            <option *ngFor='let s of categories' value="{{s.id}}">{{s.libelle}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="submit" [disabled]="!myForm1.form.valid" class="form-control btn btn-primary" value="Enregistrer">
+    </div>
+  </div>
+</form>

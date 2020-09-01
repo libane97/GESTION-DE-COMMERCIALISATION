@@ -1,0 +1,14 @@
+<div class="card" style="width: 50rem;">
+  <div class="card-header bg-primary btn btn-primary">
+    Edite un Categorie {{data.libelle}}
+  </div>
+  <div class="card-body">
+    <div class="form-group">
+      <label for="Libelle">Libelle: </label>
+      <input type="text" [(ngModel)]="data.libelle" class="form-control" id="Libelle" required>
+    </div>
+    <button class="btn btn-primary" (click)="update()">
+      Valider
+    </button>
+  </div>
+</div>

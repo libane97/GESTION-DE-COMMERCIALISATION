@@ -1,0 +1,58 @@
+<form #myForm="ngForm">
+  <div class="modal-header">
+    <h4 class="modal-title text-center" id="modal-basic-title">MISE A JOUR Product</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="libelle">libelle</label>
+          <input [(ngModel)]="data.libelle" required="true" name="libelle" id="libelle" class="form-control" type="text" placeholder="libelle">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="prix">prix</label>
+          <input [(ngModel)]="data.prix" required="true" name="prix" id="prix" class="form-control" type="text" placeholder="prix">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input [(ngModel)]="data.description" name="description" required="true" id="description" class="form-control" type="text" placeholder="description">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="quantite">Quantite</label>
+          <input [(ngModel)]="data.quantite" name="quantite" required="true" id="quantite" class="form-control" type="text" placeholder="Quantite">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="form-group">
+          <label for="photo">Photo</label>
+          <img [src]="data.photo" alt="" height="50px" width="50px">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group">
+        <label for="service">Service</label>
+        <select required="required" [(ngModel)]="data.categorie.libelle" class="form-control" name="service" id="service">
+          <option *ngFor='let s of categories' value="{{s.id}}">{{s.libelle}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="button" [disabled]="!myForm.form.valid" class="form-control btn btn-primary" (click)="update()" value="Enregistrer">
+    </div>
+  </div>
+</form>

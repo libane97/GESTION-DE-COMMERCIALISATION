@@ -1,0 +1,139 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/Article">SAMA BOUTIQUE BOUNEKH</a>
+    <form class="form-inline ml-3">
+      <div class="input-group input-group-sm">
+        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="libelle" [ngModelOptions]="{standalone:true}">
+        <div class="input-group-append">
+          <button class="btn btn-navbar" (click)="search()">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" >
+            BIENVENUE {{loginService.getUsername() | uppercase}}
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/panier">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="badge badge-danger">
+              {{panierService.getSize()}}
+            </span>
+          </a>
+        </li>
+        <li class="nav-item ml-3">
+          <a class="btn btn-secondary" routerLink="/login"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="row">
+
+    <div class="col-lg-3">
+
+      <h3 class="my-4">BIENVENU SAMA BOUNEKH</h3>
+      <div class="list-group" *ngFor="let d of categorie">
+        <a   class="list-group-item">{{d.libelle}}</a>
+      </div>
+
+
+    </div>
+    <!-- /.col-lg-3 -->
+
+    <div class="col-lg-9">
+      <div class="row mt-4">
+        <div class="card card-solid">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <h3 class="d-inline-block d-sm-none">LOWA Men’s Renegade GTX Mid Hiking Boots Review</h3>
+                <div class="col-12">
+                  <img [src]="data.photo" class="product-image" alt="Product Image">
+                </div>
+                <div class="col-12 product-image-thumbs">
+                  <div class="product-image-thumb active"><img [src]="data.photo" alt="Product Image"></div>
+                  <div class="product-image-thumb"><img [src]="data.photo" alt="Product Image"></div>
+                  <div class="product-image-thumb"><img [src]="data.photo" alt="Product Image"></div>
+                  <div class="product-image-thumb"><img [src]="data.photo" alt="Product Image"></div>
+                  <div class="product-image-thumb"><img [src]="data.photo" alt="Product Image"></div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <h3 class="my-3">{{data.libelle}}</h3>
+                <p>{{data.description}}</p>
+                <hr>
+                <div class="bg-gray py-2 px-3 mt-4" style="border-radius: 30px;"  >
+                  <h2 class="mb-0">
+                    {{data.prix}} CFA
+                  </h2>
+                  <h4 class="mt-0">
+                    <small>{{data.prix}} CFA</small>
+                  </h4>
+                </div>
+
+                <div class="mt-4" >
+                  <div class="btn btn-primary btn-lg btn-flat" style="border-radius: 30px;" >
+                    <form #f="ngForm" (ngSubmit)="onAddProductToCaddy(data)">
+                      <label class="control-label">Quantité : </label>
+                      <input type="number" name="quantity"  style="width: 40px;height: 30px" [(ngModel)]="data.quantite">
+                      <button>
+                        <i class="fas fa-shopping-cart"></i>
+                      </button>
+                    </form>
+                  </div>
+
+                  <div class="btn btn-default btn-lg btn-flat">
+                    <i class="fas fa-heart fa-lg mr-2"></i>
+                    Add to Wishlist
+                  </div>
+                </div>
+
+                <div class="mt-4 product-share">
+                  <a href="#" class="text-gray">
+                    <i class="fab fa-facebook-square fa-2x"></i>
+                  </a>
+                  <a href="#" class="text-gray">
+                    <i class="fab fa-twitter-square fa-2x"></i>
+                  </a>
+                  <a href="#" class="text-gray">
+                    <i class="fas fa-envelope-square fa-2x"></i>
+                  </a>
+                  <a href="#" class="text-gray">
+                    <i class="fas fa-rss-square fa-2x"></i>
+                  </a>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- /.card-body -->
+        </div>
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.col-lg-9 -->
+
+  </div>
+  <!-- /.row -->
+
+</div>
+ <div class="container mt-5">
+
+ </div>
+<footer class="py-5 bg-dark">
+  <div class="container mt-5">
+    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+  </div>
+  <!-- /.container -->
+</footer>

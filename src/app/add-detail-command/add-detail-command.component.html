@@ -1,0 +1,43 @@
+<form #myForm1="ngForm" (ngSubmit)="save()">
+  <div class="modal-header">
+    <h4 class="modal-title text-center" id="modal-basic-title">AJOUTER PRODUIT</h4>
+    <button type="button" class="close" aria-label="Close" >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="quantite">Quantite</label>
+          <input [(ngModel)]="detailcommand.quantite" name="quantite" id="quantite" class="form-control" type="text" placeholder="quantite">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="command">command</label>
+          <select required="required" [(ngModel)]="detailcommand.commandes.id" class="form-control" name="command" id="command">
+            <option *ngFor='let c of command' value="{{c.id}}">{{c.numero}} - {{c.user.username}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="produit">Produit</label>
+          <select required="required" [(ngModel)]="detailcommand.produit.id" class="form-control" name="produit" id="produit">
+            <option *ngFor='let p of product' value="{{p.id}}">{{p.libelle}}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="submit" [disabled]="!myForm1.form.valid" class="form-control btn btn-primary" value="Enregistrer">
+    </div>
+  </div>
+</form>

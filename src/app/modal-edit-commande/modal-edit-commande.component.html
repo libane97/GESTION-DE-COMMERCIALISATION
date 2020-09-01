@@ -1,0 +1,56 @@
+<form #myForm="ngForm">
+  <div class="modal-header">
+    <h4 class="modal-title text-center" id="modal-basic-title">MISE A JOUR COMMAND</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="dateCommande">dateCommande</label>
+          <input [(ngModel)]="data.dateCommande" name="dateCommande" id="dateCommande" class="form-control" type="Date" placeholder="Date Commande">
+        </div>
+      </div>
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="prix">prix</label>
+          <input [(ngModel)]="data.prix" name="prix" id="prix" class="form-control" type="text" placeholder="PRIX">
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6">
+        <div class="form-group">
+          <label for="livraison">livraison</label>
+          <select required="required" [(ngModel)]="data.livraison" class="form-control" name="livraison" id="livraison">
+            <option value="true">Oui</option>
+            <option value="false">Non</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="produit">Produit</label>
+            <select required="required" [(ngModel)]="data.produit" class="form-control"  multiple name="produit" id="produit">
+              <option *ngFor='let p of product' value="{{p.id}}">{{p.libelle}}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="user">Client</label>
+            <select required="required" [(ngModel)]="data.user.id" class="form-control" name="user" id="user">
+              <option *ngFor='let u of user' value="{{u.id}}">{{u.name}} {{u.username}}</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="button" [disabled]="!myForm.form.valid" class="form-control btn btn-primary" (click)="update()" value="Enregistrer">
+    </div>
+  </div>
+</form>
